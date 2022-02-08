@@ -1,4 +1,4 @@
-To run my code, simply clone this repo into the root openFrameworks folder, then open apps/myApps/brooks_HW1/brooks_HW1.sln in Visual Studio 2019 and click play. You may get a lot of warnings from the openFrameworks code if it was not setup to use visual studio 2019, but it should still work.
+To run my code, simply clone this repo into the root openFrameworks folder, then open apps/myApps/brooks_HW1/brooks_HW1.sln in Visual Studio 2019 and click play. You may get a lot of warnings from the openFrameworks code if it was not set up to use visual studio 2019, but it should still work.
 
 Most of the relevant code for this assignment is located in src/ai_behaviors.cc. Specifically:
 
