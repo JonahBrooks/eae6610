@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="src\main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\hw1_app.cc">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ai_agent.cc">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ai_behaviors.cc">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\dynamic_steering_output.cc">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{d8376475-7454-4a24-b08a-aac121d3ad6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons">
+      <UniqueIdentifier>{753e495d-6505-405a-a1b2-b196d383b121}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\hw1_app.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\rigidbody_2d.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ai_agent.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\dynamic_steering_output.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\kinematic_steering_output.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ai_behaviors.h">
+      <Filter>src</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="icon.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".editorconfig" />
+  </ItemGroup>
+</Project>

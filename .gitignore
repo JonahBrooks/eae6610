@@ -1,0 +1,76 @@
+# This file instructs git to ignore specific directories,
+# files, and file types
+# ("ignore" meaning that they won't be included
+# in the git repository)
+
+# OpenFrameworks
+#---------------
+
+/addons
+/apps/myApps/emptyExample
+/docs
+/examples
+/libs
+/other
+/projectGenerator
+/scripts
+/CHANGELOG.md
+/CODE_OF_CONDUCT.md
+/INSTALL.md
+/INSTALL_FROM_GITHUB.md
+/LICENSE.md
+/README.md
+/THANKS.md
+
+# Built files
+#------------
+
+*.exe
+[Bb]in
+[Oo]bj
+
+# Visual Studio
+#==============
+
+# Explicitly temporary files
+#---------------------------
+
+/.vs
+
+# Solution User Settings
+#-----------------------
+
+*.suo
+
+# Project User Settings
+#----------------------
+
+*.vcxproj.user
+
+# Intellisense
+#-------------
+
+*.sdf
+*.opensdf
+/ipch
+*.VC.db
+*.VC.VC.opendb
+
+# Profiling
+#----------
+
+*.psess
+*.vsp
+*.vspx
+*.sap
+
+# Resources
+#----------
+
+*.aps
+
+# Windows
+#========
+
+desktop.ini
+Thumbs.db
