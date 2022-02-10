@@ -226,6 +226,7 @@ void Hw1App::SetupKinematicDemo() {
   agents_.back().radius_ = 20;
   agents_.back().rigidbody_.position_.x = 50;
   agents_.back().rigidbody_.position_.y = ofGetHeight() - 50;
+  agents_.back().number_of_breadcrumbs_ = 100;
 
   kinematic_target_points_.push_back(Rigidbody2d());
   kinematic_target_points_.push_back(Rigidbody2d());
@@ -249,6 +250,8 @@ void Hw1App::SetupSeekDemo() {
   agents_.back().radius_ = 20;
   agents_.back().rigidbody_.position_.x = 50;
   agents_.back().rigidbody_.position_.y = ofGetHeight() - 50;
+  agents_.back().number_of_breadcrumbs_ = 100;
+  agents_.back().time_per_breadcrumb_ = 0.25f;
 }
 
 void Hw1App::SetupSeekArriveDemo() { 
@@ -260,6 +263,8 @@ void Hw1App::SetupSeekArriveDemo() {
   agents_.back().radius_ = 20;
   agents_.back().rigidbody_.position_.x = 50;
   agents_.back().rigidbody_.position_.y = ofGetHeight() - 50;
+  agents_.back().number_of_breadcrumbs_ = 100;
+  agents_.back().time_per_breadcrumb_ = 0.25f;
 }
 
 void Hw1App::SetupWanderDemo() {
