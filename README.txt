@@ -1,4 +1,4 @@
-To run my code, simply clone this repo into the root openFrameworks folder, then open apps/myApps/brooks_HW1/brooks_HW1.sln in Visual Studio 2019 and click play. You may get a lot of warnings from the openFrameworks code if it was not set up to use visual studio 2019, but it should still work.
+To run my code, simply clone this repo into the root openFrameworks folder (so the .git folder is next to a folder titled of_v0.11.2_vs2017_release that contains all the openFrameworks library), then open apps/myApps/brooks_HW1/brooks_HW1.sln in Visual Studio 2019 and click play. You may get a lot of warnings from the openFrameworks code if it was not set up to use visual studio 2019, but it should still work.
 
 Once the app is running, click the buttons along the top of the screen to toggle which demo is being run.
 

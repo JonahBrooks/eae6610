@@ -6,21 +6,21 @@
 # OpenFrameworks
 #---------------
 
-/addons
-/apps/myApps/emptyExample
-/docs
-/examples
-/libs
-/other
-/projectGenerator
-/scripts
-/CHANGELOG.md
-/CODE_OF_CONDUCT.md
-/INSTALL.md
-/INSTALL_FROM_GITHUB.md
-/LICENSE.md
-/README.md
-/THANKS.md
+of_v0.11.2_vs2017_release/addons
+of_v0.11.2_vs2017_release/apps/myApps/emptyExample
+of_v0.11.2_vs2017_release/docs
+of_v0.11.2_vs2017_release/examples
+of_v0.11.2_vs2017_release/libs
+of_v0.11.2_vs2017_release/other
+of_v0.11.2_vs2017_release/projectGenerator
+of_v0.11.2_vs2017_release/scripts
+of_v0.11.2_vs2017_release/CHANGELOG.md
+of_v0.11.2_vs2017_release/CODE_OF_CONDUCT.md
+of_v0.11.2_vs2017_release/INSTALL.md
+of_v0.11.2_vs2017_release/INSTALL_FROM_GITHUB.md
+of_v0.11.2_vs2017_release/LICENSE.md
+of_v0.11.2_vs2017_release/README.md
+of_v0.11.2_vs2017_release/THANKS.md
 
 # Built files
 #------------
