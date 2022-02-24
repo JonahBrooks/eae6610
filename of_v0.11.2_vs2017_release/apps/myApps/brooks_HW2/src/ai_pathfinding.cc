@@ -2,7 +2,6 @@
 
 #include <algorithm>
 #include <functional>
-#include <iostream>
 #include <list>
 #include <map>
 #include <queue>
@@ -94,7 +93,6 @@ std::vector<Edge> AiPathfinding::Search(int start, int goal, const Graph& graph,
 	}
 
 	if (goal_found) {
-		std::cout << "Goal found along path: " << std::endl;
 		int current_node_in_path = goal;
 		while (current_node_in_path != start) {
 			reverse_path.push(overall_cheapest_edge_into_node[current_node_in_path]);
@@ -103,7 +101,6 @@ std::vector<Edge> AiPathfinding::Search(int start, int goal, const Graph& graph,
 		reverse_path.push(Edge(start,start,0));
 		while (!reverse_path.empty()) {
 			path.push_back(reverse_path.top());
-			std::cout << reverse_path.top().dest_ + 1 << ", ";
 			reverse_path.pop();
 		}
 	}

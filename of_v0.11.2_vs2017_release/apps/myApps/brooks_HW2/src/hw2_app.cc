@@ -1,5 +1,6 @@
 #include "hw2_app.h"
 
+#include <iostream>
 #include <string>
 #include <sstream>
 #include <vector>
@@ -86,8 +87,17 @@ namespace brooks_hw2 {
 //--------------------------------------------------------------
 void Hw2App::setup() { 
   ParseGraph("SLC.gr", slc_graph_);
-  AiPathfinding::Search(0, 12, slc_graph_, HeuristicType::kGuessMinimumEdgeWeight);
-  //ParseGraph("NYC.gr", nyc_graph_);
+  std::vector<Edge> slc_path = AiPathfinding::Search(0, 12, slc_graph_, HeuristicType::kGuessMinimumEdgeWeight);
+  for (Edge edge : slc_path) {
+    std::cout << edge.dest_ << ", ";
+  }
+  std::cout << std::endl;
+  ParseGraph("NYC.gr", nyc_graph_);
+  std::vector<Edge> nyc_path = AiPathfinding::Search(1000, 1010, nyc_graph_, HeuristicType::kGuessMinimumEdgeWeight);
+  for (Edge edge : nyc_path) {
+    std::cout << edge.dest_ << ", ";
+  }
+  std::cout << std::endl;
 }
 
 //--------------------------------------------------------------
