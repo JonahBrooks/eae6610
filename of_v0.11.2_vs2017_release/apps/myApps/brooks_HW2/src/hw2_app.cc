@@ -9,6 +9,7 @@
 
 #include "ai_agent.h"
 #include "ai_behaviors.h"
+#include "ai_pathfinding.h"
 #include "graph.h"
 
 // Helper functions
@@ -81,7 +82,8 @@ namespace brooks_hw2 {
 //--------------------------------------------------------------
 void Hw2App::setup() { 
   ParseGraph("SLC.gr", slc_graph_);
-  ParseGraph("NYC.gr", nyc_graph_);
+  AiPathfinding::Search(0, 12, slc_graph_);
+  //ParseGraph("NYC.gr", nyc_graph_);
 }
 
 //--------------------------------------------------------------

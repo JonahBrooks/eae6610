@@ -18,8 +18,8 @@ class Graph {
 	Graph() : number_of_nodes_(0) {};
 	Graph(const std::vector<Edge>& edges, int number_of_nodes);
 	void Initialize(const std::vector<Edge>& edges, int number_of_nodes);
-	std::vector<std::pair<int, int>> GetAdjacentNodes(int node);
-	int GetNumberOfNodes();
+	std::vector<std::pair<int, int>> GetAdjacentNodes(int node) const;
+	int GetNumberOfNodes() const;
 
  private:
 	int number_of_nodes_;

@@ -23,11 +23,11 @@ void Graph::Initialize(const std::vector<Edge>& edges, int number_of_nodes) {
 	}
 }
 
-std::vector<std::pair<int, int>> Graph::GetAdjacentNodes(int node) {
+std::vector<std::pair<int, int>> Graph::GetAdjacentNodes(int node) const {
 	return adjacency_dests_and_weights_[node];
 }
 
-int Graph::GetNumberOfNodes() {
+int Graph::GetNumberOfNodes() const {
 	return number_of_nodes_;
 }
 
