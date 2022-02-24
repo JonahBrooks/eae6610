@@ -1,6 +1,8 @@
 #ifndef BROOKS_HW2_SRC_HW2_APP_H
 #define BROOKS_HW2_SRC_HW2_APP_H
 
+#include <vector>
+
 #include "ofMain.h"
 
 namespace brooks_hw2 {
@@ -26,7 +28,8 @@ class Hw2App : public ofBaseApp {
   void gotMessage(ofMessage msg);
   // End inherited member functions
  private:
-  
+   vector<vector<float>> slc_graph_;
+   vector<vector<float>> nyc_graph_;
 };
 
 } // namespace brooks_hw2
