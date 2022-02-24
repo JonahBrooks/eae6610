@@ -9,17 +9,21 @@
 
 #include "ai_agent.h"
 #include "ai_behaviors.h"
+#include "graph.h"
 
 // Helper functions
 namespace {
 
-bool ParseGraph(const char* path, vector<vector<int>>& out_graph_to_fill) {
+bool ParseGraph(const char* path, brooks_hw2::Graph& out_graph_to_fill) {
   char marker = 'c';
   char data_to_drop[5] = " sp ";
   int number_of_nodes = 0;
+  int number_of_edges = 0;
+  int current_edge = 0;
   int first_int = 0;
   int second_int = 0;
   int third_int = 0;
+  std::vector<brooks_hw2::Edge> edges;
   ofBuffer buffer = ofBufferFromFile(path);
   if (buffer.size() <= 0) {
     std::cout << "Failed to read from file at path " << path << std::endl;
@@ -29,13 +33,17 @@ bool ParseGraph(const char* path, vector<vector<int>>& out_graph_to_fill) {
     stringstream stream(line);
     stream.get(marker);
     switch (marker) {
-      case 'p': {
+      case 'p': { // We will always encounter a p before the first a
         stream.get(data_to_drop, 5); // Drop the " sp "
         stream >> number_of_nodes;
         if (stream.fail()) {
           return false;
         }
-        out_graph_to_fill.resize(number_of_nodes, std::vector<int>(number_of_nodes,-1));
+        stream >> number_of_edges;
+        if (stream.fail()) {
+          return false;
+        }
+        edges.resize(number_of_edges);
         break;
       }
       case 'a': {
@@ -51,14 +59,18 @@ bool ParseGraph(const char* path, vector<vector<int>>& out_graph_to_fill) {
         if (stream.fail()) {
           return false;
         }
-        if (first_int <= number_of_nodes && second_int <= number_of_nodes) {
+        if (first_int <= edges.size() && second_int <= edges.size()) {
           first_int--;
           second_int--;
-          out_graph_to_fill[first_int][second_int] = third_int;
+          edges[current_edge].source_ = first_int;
+          edges[current_edge].dest_ = second_int;
+          edges[current_edge].weight_ = third_int;
+          current_edge++;
         }
         break;
       }
     }
+    out_graph_to_fill.Initialize(edges, number_of_nodes);
   }
   return true;
 }

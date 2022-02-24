@@ -179,6 +179,7 @@
     <ClCompile Include="src\ai_agent.cc" />
     <ClCompile Include="src\ai_behaviors.cc" />
     <ClCompile Include="src\dynamic_steering_output.cc" />
+    <ClCompile Include="src\graph.cc" />
     <ClCompile Include="src\hw1_app.cc" />
     <ClCompile Include="src\hw2_app.cc" />
     <ClCompile Include="src\main.cpp" />
@@ -187,6 +188,7 @@
     <ClInclude Include="src\ai_agent.h" />
     <ClInclude Include="src\ai_behaviors.h" />
     <ClInclude Include="src\dynamic_steering_output.h" />
+    <ClInclude Include="src\graph.h" />
     <ClInclude Include="src\hw1_app.h" />
     <ClInclude Include="src\hw2_app.h" />
     <ClInclude Include="src\kinematic_steering_output.h" />

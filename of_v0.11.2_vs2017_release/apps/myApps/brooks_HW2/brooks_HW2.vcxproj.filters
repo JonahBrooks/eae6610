@@ -19,6 +19,9 @@
     <ClCompile Include="src\hw2_app.cc">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\graph.cc">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -51,6 +54,9 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="src\hw2_app.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\graph.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
