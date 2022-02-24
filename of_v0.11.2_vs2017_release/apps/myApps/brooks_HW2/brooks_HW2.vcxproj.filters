@@ -27,6 +27,9 @@
     <Filter Include="addons">
       <UniqueIdentifier>{753e495d-6505-405a-a1b2-b196d383b121}</UniqueIdentifier>
     </Filter>
+    <Filter Include="data">
+      <UniqueIdentifier>{a3d6ff4f-1fd5-4051-9290-8469db20dafd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\hw1_app.h">
@@ -56,5 +59,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include=".editorconfig" />
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="data\USA-road-d.NY.gr">
+      <Filter>data</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="data\SLC.gr">
+      <Filter>data</Filter>
+    </CopyFileToFolders>
   </ItemGroup>
 </Project>
