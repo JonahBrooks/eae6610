@@ -13,12 +13,13 @@
 // Helper functions
 namespace {
 
-bool ParseGraph(const char* path, vector<vector<float>>& out_graph_to_fill) {
-  char marker;
+bool ParseGraph(const char* path, vector<vector<int>>& out_graph_to_fill) {
+  char marker = 'c';
   char data_to_drop[5] = " sp ";
-  int first_int;
-  int second_int;
-  int third_int;
+  int number_of_nodes = 0;
+  int first_int = 0;
+  int second_int = 0;
+  int third_int = 0;
   ofBuffer buffer = ofBufferFromFile(path);
   if (buffer.size() <= 0) {
     std::cout << "Failed to read from file at path " << path << std::endl;
@@ -27,25 +28,37 @@ bool ParseGraph(const char* path, vector<vector<float>>& out_graph_to_fill) {
   for (string line : buffer.getLines()) {
     stringstream stream(line);
     stream.get(marker);
-    std::cout << marker;
     switch (marker) {
       case 'p': {
-        stream.get(data_to_drop, 4); // Drop the " sp "
-        std::cout << data_to_drop;
+        stream.get(data_to_drop, 5); // Drop the " sp "
+        stream >> number_of_nodes;
+        if (stream.fail()) {
+          return false;
+        }
+        out_graph_to_fill.resize(number_of_nodes, std::vector<int>(number_of_nodes,-1));
+        break;
+      }
+      case 'a': {
         stream >> first_int;
         if (stream.fail()) {
           return false;
         }
-        stream.get(); // Drop the space
         stream >> second_int;
         if (stream.fail()) {
           return false;
         }
-        std::cout << first_int << " " << second_int;
+        stream >> third_int;
+        if (stream.fail()) {
+          return false;
+        }
+        if (first_int <= number_of_nodes && second_int <= number_of_nodes) {
+          first_int--;
+          second_int--;
+          out_graph_to_fill[first_int][second_int] = third_int;
+        }
         break;
       }
     }
-    std::cout << std::endl;
   }
   return true;
 }
@@ -55,7 +68,8 @@ namespace brooks_hw2 {
 
 //--------------------------------------------------------------
 void Hw2App::setup() { 
-  std::cout << ParseGraph("SLC.gr", slc_graph_) << std::endl;
+  ParseGraph("SLC.gr", slc_graph_);
+  ParseGraph("NYC.gr", nyc_graph_);
 }
 
 //--------------------------------------------------------------

@@ -67,5 +67,8 @@
     <CopyFileToFolders Include="data\SLC.gr">
       <Filter>data</Filter>
     </CopyFileToFolders>
+    <CopyFileToFolders Include="data\NYC.gr">
+      <Filter>data</Filter>
+    </CopyFileToFolders>
   </ItemGroup>
 </Project>

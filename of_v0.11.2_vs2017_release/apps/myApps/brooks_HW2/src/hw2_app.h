@@ -28,8 +28,8 @@ class Hw2App : public ofBaseApp {
   void gotMessage(ofMessage msg);
   // End inherited member functions
  private:
-   vector<vector<float>> slc_graph_;
-   vector<vector<float>> nyc_graph_;
+   vector<vector<int>> slc_graph_;
+   vector<vector<int>> nyc_graph_;
 };
 
 } // namespace brooks_hw2
