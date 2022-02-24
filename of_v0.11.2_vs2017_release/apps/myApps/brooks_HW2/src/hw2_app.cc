@@ -20,6 +20,7 @@ bool ParseGraph(const char* path, brooks_hw2::Graph& out_graph_to_fill) {
   char data_to_drop[5] = " sp ";
   int number_of_nodes = 0;
   int number_of_edges = 0;
+  int smallest_edge_weight = INT_MAX;
   int current_edge = 0;
   int first_int = 0;
   int second_int = 0;
@@ -66,12 +67,15 @@ bool ParseGraph(const char* path, brooks_hw2::Graph& out_graph_to_fill) {
           edges[current_edge].source_ = first_int;
           edges[current_edge].dest_ = second_int;
           edges[current_edge].weight_ = third_int;
+          if (third_int < smallest_edge_weight) {
+            smallest_edge_weight = third_int;
+          }
           current_edge++;
         }
         break;
       }
     }
-    out_graph_to_fill.Initialize(edges, number_of_nodes);
+    out_graph_to_fill.Initialize(edges, number_of_nodes, smallest_edge_weight);
   }
   return true;
 }
@@ -82,7 +86,7 @@ namespace brooks_hw2 {
 //--------------------------------------------------------------
 void Hw2App::setup() { 
   ParseGraph("SLC.gr", slc_graph_);
-  AiPathfinding::Search(0, 12, slc_graph_);
+  AiPathfinding::Search(0, 12, slc_graph_, HeuristicType::kGuessMinimumEdgeWeight);
   //ParseGraph("NYC.gr", nyc_graph_);
 }
 

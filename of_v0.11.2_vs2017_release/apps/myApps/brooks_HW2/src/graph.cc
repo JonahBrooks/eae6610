@@ -4,7 +4,8 @@
 
 namespace brooks_hw2 {
 
-Graph::Graph(const std::vector<Edge>& edges, int number_of_nodes) {
+	Graph::Graph(const std::vector<Edge>& edges, int number_of_nodes, int smallest_edge_weight) {
+	smallest_edge_weight_ = smallest_edge_weight;
 	number_of_nodes_ = number_of_nodes;
 
 	adjacency_dests_and_weights_.resize(number_of_nodes, {});
@@ -13,7 +14,8 @@ Graph::Graph(const std::vector<Edge>& edges, int number_of_nodes) {
 	}
 }
 
-void Graph::Initialize(const std::vector<Edge>& edges, int number_of_nodes) {
+void Graph::Initialize(const std::vector<Edge>& edges, int number_of_nodes, int smallest_edge_weight) {
+	smallest_edge_weight_ = smallest_edge_weight;
 	number_of_nodes_ = number_of_nodes;
 
 	adjacency_dests_and_weights_.clear();
@@ -29,6 +31,10 @@ std::vector<std::pair<int, int>> Graph::GetAdjacentNodes(int node) const {
 
 int Graph::GetNumberOfNodes() const {
 	return number_of_nodes_;
+}
+
+int Graph::GetSmallestEdgeWeight() const {
+	return smallest_edge_weight_;
 }
 
 } // namespace brooks_hw2

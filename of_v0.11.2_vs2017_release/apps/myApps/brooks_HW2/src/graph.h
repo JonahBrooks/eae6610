@@ -15,13 +15,15 @@ class Edge {
 
 class Graph {
  public:
-	Graph() : number_of_nodes_(0) {};
-	Graph(const std::vector<Edge>& edges, int number_of_nodes);
-	void Initialize(const std::vector<Edge>& edges, int number_of_nodes);
+	Graph() : smallest_edge_weight_(INT_MAX), number_of_nodes_(0) {};
+	Graph(const std::vector<Edge>& edges, int number_of_nodes, int smallest_edge_weigth);
+	void Initialize(const std::vector<Edge>& edges, int number_of_nodes, int smallest_edge_weight);
 	std::vector<std::pair<int, int>> GetAdjacentNodes(int node) const;
 	int GetNumberOfNodes() const;
+	int GetSmallestEdgeWeight() const;
 
  private:
+	int smallest_edge_weight_;
 	int number_of_nodes_;
 	std::vector < std::vector<std::pair<int, int>>> adjacency_dests_and_weights_;
 };

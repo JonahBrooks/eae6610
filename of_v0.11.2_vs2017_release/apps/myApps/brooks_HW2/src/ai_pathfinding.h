@@ -7,16 +7,7 @@
 
 namespace brooks_hw2 {
 
-enum class HeuristicType { kDijkstras = 0, kConstantGuess};
-
-//class Connection {
-// public:
-//  Connection() : source_(NodeRecord()), dest_(NodeRecord()), weight_(0) {}
-//  Connection(NodeRecord source, NodeRecord dest, int weight) : source_(source), dest_(dest), weight_(weight) {}
-//  NodeRecord source_;
-//  NodeRecord dest_;
-//  int weight_;
-//};
+enum class HeuristicType { kDijkstras = 0, kGuessMinimumEdgeWeight, kGuess1};
 
 class NodeRecord {
  public:
@@ -51,7 +42,8 @@ class AiPathfinding {
   ~AiPathfinding() = delete;
 
   static int DijkstrasHeuristic(int start, int goal, const Graph& graph);
-  static int ConstantGuessHeuristic(int start, int goal, const Graph& graph);
+  static int GuessMinimumEdgeWeightHeuristic(int start, int goal, const Graph& graph);
+  static int Guess1Heuristic(int start, int goal, const Graph& graph);
 };
 
 }

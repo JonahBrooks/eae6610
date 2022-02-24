@@ -24,9 +24,12 @@ std::vector<Edge> AiPathfinding::Search(int start, int goal, const Graph& graph,
 	int (*h)(int, int, const Graph&) = &DijkstrasHeuristic;
 	
 	switch (heuristic) {
-		case HeuristicType::kConstantGuess: {
-			h = &ConstantGuessHeuristic;
+		case HeuristicType::kGuessMinimumEdgeWeight: {
+			h = &GuessMinimumEdgeWeightHeuristic;
 			break;
+		}
+		case HeuristicType::kGuess1: {
+			h = &Guess1Heuristic;
 		}
 	}
 
@@ -112,8 +115,12 @@ int AiPathfinding::DijkstrasHeuristic(int start, int goal, const Graph& graph) {
 	return 0;
 }
 
-int AiPathfinding::ConstantGuessHeuristic(int start, int goal, const Graph& graph) {
+int AiPathfinding::Guess1Heuristic(int start, int goal, const Graph& graph) {
 	return 1;
+}
+
+int AiPathfinding::GuessMinimumEdgeWeightHeuristic(int start, int goal, const Graph& graph) {
+	return graph.GetSmallestEdgeWeight();
 }
 
 } // namespace brooks_hw2
