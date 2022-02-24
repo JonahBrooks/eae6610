@@ -97,7 +97,7 @@ std::vector<Edge> AiPathfinding::Search(int start, int goal, const Graph& graph,
 			reverse_path.push(overall_cheapest_edge_into_node[current_node_in_path]);
 			current_node_in_path = overall_cheapest_edge_into_node[current_node_in_path].source_;
 		}
-		reverse_path.push(overall_cheapest_edge_into_node[start]);
+		reverse_path.push(Edge(start,start,0));
 		while (!reverse_path.empty()) {
 			path.push_back(reverse_path.top());
 			std::cout << reverse_path.top().dest_ + 1 << ", ";
