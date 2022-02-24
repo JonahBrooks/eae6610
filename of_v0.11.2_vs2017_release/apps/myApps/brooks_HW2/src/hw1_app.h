@@ -1,5 +1,5 @@
-#ifndef BROOKS_HW2_SRC_HW2_APP_H
-#define BROOKS_HW2_SRC_HW2_APP_H
+#ifndef BROOKS_HW2_SRC_HW1_APP_H
+#define BROOKS_HW2_SRC_HW1_APP_H
 
 #include <vector>
 
@@ -67,5 +67,5 @@ class Hw1App : public ofBaseApp {
 
 } // namespace brooks_hw2
 
-#endif // BROOKS_HW2_SRC_HW2_APP_H
+#endif // BROOKS_HW2_SRC_HW1_APP_H
 

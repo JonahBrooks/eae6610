@@ -16,6 +16,9 @@
     <ClCompile Include="src\dynamic_steering_output.cc">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\hw2_app.cc">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -42,6 +45,9 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="src\ai_behaviors.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\hw2_app.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>

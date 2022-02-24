@@ -1,5 +1,5 @@
 #include "ofMain.h"
-#include "hw1_app.h"
+#include "hw2_app.h"
 
 //========================================================================
 int main( ){
@@ -8,6 +8,6 @@ int main( ){
 	// this kicks off the running of my app
 	// can be OF_WINDOW or OF_FULLSCREEN
 	// pass in width and height too:
-	ofRunApp(new brooks_hw2::Hw1App());
+	ofRunApp(new brooks_hw2::Hw2App());
 
 }
