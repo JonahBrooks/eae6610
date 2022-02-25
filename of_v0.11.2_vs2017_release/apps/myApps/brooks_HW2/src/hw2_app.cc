@@ -160,10 +160,12 @@ void Hw2App::update() {
   if (boid_.rigidbody_.position_.distance(points_to_travel_.front()) <= threshold_for_counting_at_point) {
     points_to_travel_.pop();
   }
-
+  if (points_to_travel_.empty()) {
+    return;
+  }
   Rigidbody2d target;
   target.position_ = points_to_travel_.front();
-  float max_linear_accel = 100;
+  float max_linear_accel = 10;
   // Calculate the linear acceleration for the boid
   DynamicSteeringOutput steering_output = AiBehaviors::DynamicSeek(
     boid_.rigidbody_, target, max_linear_accel);
@@ -226,6 +228,7 @@ void Hw2App::mousePressed(int x, int y, int button) {
     std::vector<Edge> path = AiPathfinding::Search(WorldToGrid(boid_.rigidbody_.position_),
       WorldToGrid(click_location_), indoor_graph_, 
       nodes_visited, HeuristicType::kGuessMinimumEdgeWeight);
+    std::queue<ofVec2f>().swap(points_to_travel_); // Clear queue
     for (Edge edge : path) {
       points_to_travel_.push(GridToWorld(edge.dest_));
     }
