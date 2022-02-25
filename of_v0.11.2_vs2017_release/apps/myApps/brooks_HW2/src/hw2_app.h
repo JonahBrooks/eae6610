@@ -34,7 +34,7 @@ class Hw2App : public ofBaseApp {
  private:
 
    void RunHeuristicAnalysis();
-   void MakeWallAndEditEdges(size_t x, size_t y, size_t length, bool horizontal);
+   void MakeWallAndEditEdges(size_t x, size_t y, size_t width, size_t height);
    ofVec2f GridToWorld(size_t x, size_t y);
    ofVec2f GridToWorld(size_t i);
    size_t WorldToGrid(ofVec2f location);
