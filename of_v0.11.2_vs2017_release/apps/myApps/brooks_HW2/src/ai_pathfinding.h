@@ -36,7 +36,7 @@ class NodeRecord {
 
 class AiPathfinding {
  public:
-   static std::vector<Edge> Search(int start, int goal, const Graph& graph, HeuristicType heuristic = HeuristicType::kDijkstras);
+   static std::vector<Edge> Search(int start, int goal, const Graph& graph, int& out_nodes_visited, HeuristicType heuristic = HeuristicType::kDijkstras);
  private:
    AiPathfinding() = delete;
   ~AiPathfinding() = delete;

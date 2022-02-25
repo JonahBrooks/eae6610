@@ -10,7 +10,7 @@
 
 namespace brooks_hw2 {
 
-std::vector<Edge> AiPathfinding::Search(int start, int goal, const Graph& graph, HeuristicType heuristic) {
+std::vector<Edge> AiPathfinding::Search(int start, int goal, const Graph& graph, int& out_nodes_visited, HeuristicType heuristic) {
 	std::vector<Edge> path;
 	std::stack<Edge> reverse_path;
 	std::priority_queue<NodeRecord, std::vector<NodeRecord>, NodeRecord> fringe;
@@ -31,7 +31,7 @@ std::vector<Edge> AiPathfinding::Search(int start, int goal, const Graph& graph,
 			h = &Guess1Heuristic;
 		}
 	}
-
+	out_nodes_visited = 0;
 	fringe.push(NodeRecord(start, Edge(), 0, 0 + h(start, goal, graph)));
 	NodeRecord current = fringe.top();
 	open_list.push_back(current);
@@ -40,6 +40,8 @@ std::vector<Edge> AiPathfinding::Search(int start, int goal, const Graph& graph,
 		current = fringe.top();
 		fringe.pop();
 		
+		out_nodes_visited++;
+
 		if (current.node_id_ == goal) {
 			goal_found = true;
 			break;
