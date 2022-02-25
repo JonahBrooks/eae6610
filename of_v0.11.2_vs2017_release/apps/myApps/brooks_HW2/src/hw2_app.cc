@@ -412,8 +412,8 @@ ofVec2f Hw2App::GridToWorld(size_t i) {
 }
 
 size_t Hw2App::WorldToGrid(ofVec2f location) {
-  size_t x = (location.x - grid_offset_.x) / grid_square_world_width_;
-  size_t y = (location.y - grid_offset_.y) / grid_square_world_height_;
+  size_t x = (location.x - grid_offset_.x + grid_square_world_width_/2) / grid_square_world_width_;
+  size_t y = (location.y - grid_offset_.y + grid_square_world_height_/2) / grid_square_world_height_;
   return x + (y * grid_width_);
 }
 
