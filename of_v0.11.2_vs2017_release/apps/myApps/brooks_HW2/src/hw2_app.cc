@@ -133,10 +133,9 @@ void Hw2App::setup() {
       }
     }
   }
-
-  //walls_.push_back(ofRectangle(50, 100, 100, 40));
-
-  // TODO: Remove edges blocked by walls
+  
+  MakeWallAndEditEdges(0, 0, 5, true);
+  MakeWallAndEditEdges(10, 0, 5, false);
 
   indoor_graph_.Initialize(edges_, grid_number_of_nodes_, 1);
 
@@ -399,6 +398,56 @@ void Hw2App::RunHeuristicAnalysis() {
   nodes_visited = 0;
   total_nodes_visited_across_walkthroughs = 0;
   total_time_across_walkthroughs = 0;
+}
+
+void Hw2App::MakeWallAndEditEdges(size_t x, size_t y, size_t length, bool horizontal) {
+  if (horizontal) {
+    size_t width = length;
+    size_t height = 1;
+    ofVec2f wall_offset(grid_square_world_width_ / 4, grid_square_world_height_ / 4);
+    walls_.push_back(ofRectangle(GridToWorld(x, y) + wall_offset, grid_square_world_width_ * width - wall_offset.x * 2, grid_square_world_height_ * height - wall_offset.y * 2));
+  
+    std::vector<Edge>::iterator to_remove;
+    for (size_t i = x; i < x + width; i++) {
+      for (size_t j = y; j < y + height; j++) {
+        // Remove down pointing edge and return edge
+        if (j < grid_height_ - 1 && i != x) {
+          to_remove = std::find(edges_.begin(), edges_.end(), Edge(i + (j * grid_width_), i + (j * grid_width_) + grid_width_, 1));
+          if (to_remove != edges_.end()) {
+            edges_.erase(to_remove);
+          }
+          to_remove = std::find(edges_.begin(), edges_.end(), Edge(i + (j * grid_width_) + grid_width_, i + (j * grid_width_), 1));
+          if (to_remove != edges_.end()) {
+            edges_.erase(to_remove);
+          }
+        }
+      }
+    }
+  }
+  else {
+    size_t width = 1;
+    size_t height = length;
+    ofVec2f wall_offset(grid_square_world_width_ / 4, grid_square_world_height_ / 4);
+    walls_.push_back(ofRectangle(GridToWorld(x, y) + wall_offset, grid_square_world_width_ * width - wall_offset.x * 2, grid_square_world_height_ * height - wall_offset.y * 2));
+
+    std::vector<Edge>::iterator to_remove;
+    for (size_t i = x; i < x + width; i++) {
+      for (size_t j = y; j < y + height; j++) {
+        // Remove right pointing edge and return edge
+        if (i < grid_width_ - 1 && j != y) {
+          edges_.push_back(Edge(i + (j * grid_width_), (i + 1) + (j * grid_width_), 1));
+          to_remove = std::find(edges_.begin(), edges_.end(), Edge(i + (j * grid_width_), (i + 1) + (j * grid_width_), 1));
+          if (to_remove != edges_.end()) {
+            edges_.erase(to_remove);
+          }
+          to_remove = std::find(edges_.begin(), edges_.end(), Edge((i + 1) + (j * grid_width_), i + (j * grid_width_), 1));
+          if (to_remove != edges_.end()) {
+            edges_.erase(to_remove);
+          }
+        }
+      }
+    }
+  }
 }
 
 ofVec2f Hw2App::GridToWorld(size_t x, size_t y) {

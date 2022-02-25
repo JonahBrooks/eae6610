@@ -8,6 +8,9 @@ class Edge {
  public:
 	 Edge() : source_(0), dest_(0), weight_(0) {};
 	 Edge(int source, int dest, int weight) : source_(source), dest_(dest), weight_(weight) {};
+	 bool operator==(const Edge& rhs) {
+		 return source_ == rhs.source_ && dest_ == rhs.dest_;
+	 }
 	 int source_;
 	 int dest_;
 	 int weight_;
