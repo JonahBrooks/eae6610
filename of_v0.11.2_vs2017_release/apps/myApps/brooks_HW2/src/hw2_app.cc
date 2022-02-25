@@ -137,6 +137,8 @@ void Hw2App::setup() {
   MakeWallAndEditEdges(0, 3, 5, 1);
   MakeWallAndEditEdges(0, 7, 5, 1);
   MakeWallAndEditEdges(6, 0, 1, 5);
+  MakeWallAndEditEdges(6, 4, 10, 1);
+  MakeWallAndEditEdges(14, 4, 2, 10);
   MakeWallAndEditEdges(20, 20, 5, 5);
 
   indoor_graph_.Initialize(edges_, grid_number_of_nodes_, 1);
@@ -193,6 +195,14 @@ void Hw2App::draw() {
     ofDrawRectangle(wall);
   }
 
+  if (!points_to_travel_.empty()) {
+    ofSetColor(ofColor::yellow);
+    std::queue<ofVec2f> points_to_draw = points_to_travel_;
+    while (!points_to_draw.empty()) {
+      ofDrawCircle(points_to_draw.front(), 4);
+      points_to_draw.pop();
+    }
+  }
 
   boid_.DrawAsBoid();
 
