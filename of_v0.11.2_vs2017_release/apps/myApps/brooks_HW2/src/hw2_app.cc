@@ -134,16 +134,16 @@ void Hw2App::setup() {
     }
   }
   
-  MakeWallAndEditEdges(0, 0, 5, 1);
-  MakeWallAndEditEdges(10, 0, 1, 5);
+  MakeWallAndEditEdges(0, 3, 5, 1);
+  MakeWallAndEditEdges(0, 7, 5, 1);
+  MakeWallAndEditEdges(6, 0, 1, 5);
   MakeWallAndEditEdges(20, 20, 5, 5);
 
   indoor_graph_.Initialize(edges_, grid_number_of_nodes_, 1);
 
   boid_.color_ = ofColor(255, 0, 0);
   boid_.radius_ = 7;
-  boid_.rigidbody_.position_.x = 50;
-  boid_.rigidbody_.position_.y = ofGetHeight() - 50;
+  boid_.rigidbody_.position_ = GridToWorld(5, 5);
   boid_.number_of_breadcrumbs_ = 100;
   
   ofResetElapsedTimeCounter();
