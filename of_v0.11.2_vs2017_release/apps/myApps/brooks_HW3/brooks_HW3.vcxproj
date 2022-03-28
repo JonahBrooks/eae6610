@@ -183,6 +183,7 @@
     <ClCompile Include="src\graph.cc" />
     <ClCompile Include="src\hw1_app.cc" />
     <ClCompile Include="src\hw2_app.cc" />
+    <ClCompile Include="src\hw3_app.cc" />
     <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -193,6 +194,7 @@
     <ClInclude Include="src\graph.h" />
     <ClInclude Include="src\hw1_app.h" />
     <ClInclude Include="src\hw2_app.h" />
+    <ClInclude Include="src\hw3_app.h" />
     <ClInclude Include="src\kinematic_steering_output.h" />
     <ClInclude Include="src\rigidbody_2d.h" />
   </ItemGroup>

@@ -25,6 +25,9 @@
     <ClCompile Include="src\ai_pathfinding.cc">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\hw3_app.cc">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -63,6 +66,9 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="src\ai_pathfinding.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\hw3_app.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
