@@ -55,8 +55,6 @@ class Hw3App : public ofBaseApp {
   std::vector<ofVec2f> grid_;
   std::vector<Edge> edges_;
 
-  std::queue<ofVec2f> points_to_travel_;
-
   ofVec2f click_location_;
 
   AiAgent boid_;

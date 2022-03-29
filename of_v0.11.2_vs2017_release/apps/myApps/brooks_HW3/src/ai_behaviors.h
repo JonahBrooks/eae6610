@@ -70,6 +70,8 @@ class AiBehaviors {
       float blending_weight_velocity_match, float blending_weight_arrive,
       AiAgent& out_centroid);
 
+  static DynamicSteeringOutput PathFollowing(AiAgent character);
+
  private:
   AiBehaviors() = delete;
   ~AiBehaviors() = delete;

@@ -159,23 +159,8 @@ void Hw3App::update() {
   float dt = ofGetElapsedTimef();
   ;
   ofResetElapsedTimeCounter();
-  if (points_to_travel_.empty()) {
-    return;
-  }
-  float threshold_for_counting_at_point = 1;
-  if (boid_.rigidbody_.position_.distance(points_to_travel_.front()) <=
-      threshold_for_counting_at_point) {
-    points_to_travel_.pop();
-  }
-  if (points_to_travel_.empty()) {
-    return;
-  }
-  Rigidbody2d target;
-  target.position_ = points_to_travel_.front();
-  float max_linear_accel = 10;
-  // Calculate the linear acceleration for the boid
-  DynamicSteeringOutput steering_output =
-      AiBehaviors::DynamicSeek(boid_.rigidbody_, target, max_linear_accel);
+  
+  DynamicSteeringOutput steering_output = AiBehaviors::PathFollowing(boid_);
   // Calculate the rotational acceleration to face direction of travel and add
   // it to steering_output
   steering_output = steering_output + LookInDirectionOfTravel(boid_);
@@ -199,16 +184,7 @@ void Hw3App::draw() {
     ofDrawRectangle(wall);
   }
 
-  if (!points_to_travel_.empty()) {
-    ofSetColor(ofColor::yellow);
-    std::queue<ofVec2f> points_to_draw = points_to_travel_;
-    while (!points_to_draw.empty()) {
-      ofDrawCircle(points_to_draw.front(), 4);
-      points_to_draw.pop();
-    }
-  }
-
-  boid_.DrawAsBoid();
+  boid_.DrawAsBoid(true);
 
   ofSetColor(ofColor::forestGreen);
   ofDrawCircle(click_location_, 5);
@@ -242,10 +218,11 @@ void Hw3App::mousePressed(int x, int y, int button) {
     std::vector<Edge> path = AiPathfinding::Search(
         WorldToGrid(boid_.rigidbody_.position_), WorldToGrid(click_location_),
         indoor_graph_, nodes_visited, HeuristicType::kGuessMinimumEdgeWeight);
-    std::queue<ofVec2f>().swap(points_to_travel_);  // Clear queue
+    std::queue<ofVec2f> new_path;  // Clear queue
     for (Edge edge : path) {
-      points_to_travel_.push(GridToWorld(edge.dest_));
+      new_path.push(GridToWorld(edge.dest_));
     }
+    boid_.SetPathToFollow(new_path);
   }
 }
 

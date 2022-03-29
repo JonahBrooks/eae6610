@@ -326,4 +326,20 @@ DynamicSteeringOutput AiBehaviors::Flocking(
   return output;
 }
 
+DynamicSteeringOutput AiBehaviors::PathFollowing(AiAgent character)
+{
+    Rigidbody2d target;
+    DynamicSteeringOutput steering_output;
+    steering_output.linear_acceleration = ofVec2f(0,0);
+    steering_output.rotational_acceleration = 0;
+    if (character.HasPathToFollow())
+    {
+        target.position_ = character.NextPointToFollow();
+        float max_linear_accel = 10;
+        // Calculate the linear acceleration for the boid
+        steering_output = AiBehaviors::DynamicSeek(character.rigidbody_, target, max_linear_accel);
+    }
+    return steering_output;
+}
+
 }

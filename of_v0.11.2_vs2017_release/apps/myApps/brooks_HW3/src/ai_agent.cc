@@ -80,6 +80,15 @@ void AiAgent::Update(float dt, DynamicSteeringOutput steering_output) {
     UpdateBreadcrumbs();
   }
 
+  if (!points_to_travel_.empty())
+  {
+      float threshold_for_counting_at_point = 1;
+      if (rigidbody_.position_.distance(points_to_travel_.front()) <=
+          threshold_for_counting_at_point) {
+          points_to_travel_.pop();
+      }
+  }
+
 }
 
 void AiAgent::UpdateKinematic(float dt, KinematicSteeringOutput steering_output) {
@@ -109,7 +118,7 @@ void AiAgent::UpdateKinematic(float dt, KinematicSteeringOutput steering_output)
   }
 }
 
-void AiAgent::DrawAsBoid() {
+void AiAgent::DrawAsBoid(bool draw_debug_path) {
   // Draw the boid
   ofPushMatrix();
   ofSetColor(color_);
@@ -125,6 +134,18 @@ void AiAgent::DrawAsBoid() {
   // Draw breadcrumbs
   for (unsigned int i = 0; i < breadcrumbs_.size(); i++) {
     ofDrawCircle(breadcrumbs_[i], radius_ / 4.0f);
+  }
+
+  // Draw the debug path, if requested and present
+  if (draw_debug_path && !points_to_travel_.empty()) {
+      ofPushMatrix();
+      ofSetColor(ofColor::yellow);
+      std::queue<ofVec2f> points_to_draw = points_to_travel_;
+      while (!points_to_draw.empty()) {
+          ofDrawCircle(points_to_draw.front(), 4);
+          points_to_draw.pop();
+      }
+      ofPopMatrix();
   }
 }
 
@@ -144,6 +165,28 @@ void AiAgent::DrawAsPoint(bool draw_debug_circles) {
 
 void AiAgent::MoveOffScreen() { 
   rigidbody_.position_ = ofVec2f(-1000, -1000); 
+}
+
+void AiAgent::SetPathToFollow(std::queue<ofVec2f> path)
+{
+    points_to_travel_ = path;
+}
+
+bool AiAgent::HasPathToFollow()
+{
+    return !points_to_travel_.empty();
+}
+
+ofVec2f AiAgent::NextPointToFollow()
+{
+    if (HasPathToFollow())
+    {
+        return points_to_travel_.front();
+    }
+    else
+    {
+        return ofVec2f(-1, -1);
+    }
 }
 
 void AiAgent::UpdateBreadcrumbs() {

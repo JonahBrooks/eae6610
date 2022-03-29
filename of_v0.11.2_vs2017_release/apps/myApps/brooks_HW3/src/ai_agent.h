@@ -2,6 +2,7 @@
 #define BROOKS_HW3_SRC_AI_AGENT_H
 
 #include <deque>
+#include <queue>
 
 #include "ofColor.h"
 #include "ofVec2f.h"
@@ -9,6 +10,7 @@
 #include "rigidbody_2d.h"
 #include "dynamic_steering_output.h"
 #include "kinematic_steering_output.h"
+#include "graph.h"
 
 namespace brooks_hw3 {
 class AiAgent {
@@ -25,9 +27,12 @@ class AiAgent {
 
   void Update(float dt, DynamicSteeringOutput steering_output);
   void UpdateKinematic(float dt, KinematicSteeringOutput steering_output);
-  void DrawAsBoid();
+  void DrawAsBoid(bool draw_debug_path = false);
   void DrawAsPoint(bool draw_debug_circles = false);
   void MoveOffScreen();
+  void SetPathToFollow(std::queue<ofVec2f> path);
+  bool HasPathToFollow();
+  ofVec2f NextPointToFollow();
 
   Rigidbody2d rigidbody_;
   ofColor color_;
@@ -47,6 +52,8 @@ class AiAgent {
 
   std::deque<ofVec2f> breadcrumbs_;
   float time_since_last_breadcrumb_;
+
+  std::queue<ofVec2f> points_to_travel_;
 };
 } // namespace brooks_hw3
 
